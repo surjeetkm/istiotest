@@ -3,7 +3,7 @@ node{
 		git credentialsId: 'GITHUB_CREDENTIALS', url: 'https://github.com/surjeetkm/istiotest.git'
 	}
 	stage('Build Artifact'){
-		def mavenHome = tool name : "Maven", type: "maven";
+		def mavenHome = tool name : "Maven", type: "maven"
 		def mavenCmd = "${mavenHome}/bin/mvn"
 		sh ${mavenCmd} clean install
 	}
