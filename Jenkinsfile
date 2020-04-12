@@ -1,13 +1,13 @@
 node{
-	stage('Git clone'){
+	stage("Git clone"){
 		git credentialsId: 'GITHUB_CREDENTIALS', url: 'https://github.com/surjeetkm/istiotest.git'
 	}
-	stage('Build Artifact'){
+	stage("Build Artifact"){
 		def mavenHome = tool name : "Maven", type: "maven"
 		def mavenCmd = "${mavenHome}/bin/mvn"
-		sh ${mavenCmd} clean install
+		sh "${mavenCmd} clean install"
 	}
-	stage('Build Docker Image'){
+	stage("Build Docker Image"){
 		app=docker.build('microservices-2020/istio-service')
 	}
 	stage('docker push'){
