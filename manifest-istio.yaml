@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istio-deployment
+  labels:
+    app: istio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: istio-service
+  template:
+    metadata:
+      labels:
+        app: istio-service
+        version: v1
+    spec:
+      containers:
+      - name: istio-apps
+        image: eu.gcr.io/microservices-2020/istio-service
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: istio-service
+  labels:
+    app: istio-service
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: istio-service
+---
+
+
