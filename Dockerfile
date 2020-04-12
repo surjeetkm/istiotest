@@ -1,4 +1,6 @@
 FROM openjdk:8
+RUN mkdir -p /opt/store
+COPY ./target/istio-service.jar /opt/store/
+WORKDIR /opt/store
 EXPOSE 8080
-ADD target/istio-service.jar istio-service.jar
 ENTRYPOINT ["java","-jar","istio-service.jar"]
