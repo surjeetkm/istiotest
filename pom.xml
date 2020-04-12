@@ -38,7 +38,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>istio-service.jar</finalName>
+		<finalName>istio-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
