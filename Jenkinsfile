@@ -10,7 +10,7 @@ node{
 	stage("Build Docker Image"){
 		app=docker.build('microservices-2020/istio-service')
 	}
-	stage('docker push'){
+	stage("docker push"){
 		docker.withRegistry('https://eu.gcr.io','gcr:myregistry')
 		app.push(${"env.BUILD_NUMBER"})
 		app.push("latest")
