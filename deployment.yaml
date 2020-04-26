@@ -1,19 +1,19 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: service-1
+  name: linkerd-example
 spec:
   selector:
     matchLabels:
-      app: service-1
+      app: linkerd-example
   replicas: 1
   template:
     metadata:
       labels:
-        app: service-1
+        app: linkerd-example
     spec:
       containers:
-      - name: service-1
-        image: 'eu.gcr.io/microservices-2020/istio-service:latest'
+      - name: linkerd-example
+        image: 'eu.gcr.io/microservices-2020/istio-service:v1'
         ports:
-        - containerPort: 80
+        - containerPort: 8080
