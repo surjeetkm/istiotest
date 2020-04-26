@@ -8,7 +8,7 @@ node{
 		sh "${mavenCmd} clean install"
 	}
 	stage("Build Docker Image"){
-		app=docker.build('microservices-2020/istio-service')
+		app=docker.build('microservices-2020/istio-service:v1')
 	}
 	stage("Push Docker image to Container Registry"){
 			docker.withRegistry('https://eu.gcr.io', 'gcr:myregistry') {
