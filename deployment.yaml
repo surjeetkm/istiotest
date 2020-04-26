@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: service-1
+spec:
+  selector:
+    matchLabels:
+      app: service-1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-1
+    spec:
+      containers:
+      - name: service-1
+        image: 'eu.gcr.io/microservices-2020/istio-service:latest'
+        ports:
+        - containerPort: 80
