@@ -17,3 +17,5 @@ spec:
         image: 'eu.gcr.io/microservices-2020/istio-service:v1'
         ports:
         - containerPort: 8080
+  
+  
