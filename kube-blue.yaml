@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: Production-Deployment
+  labels:
+     app: prod-deployment
+spec:
+  replicas: 3 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1      
+  selector:
+    matchLabels:
+      label:
+        app: prod-deployment
+  template:
+    metadata:
+      name: Pod-template
+      labels:
+         app: prod-deployment
+    spec:
+      containers:
+       - name: Pod-Container
+         image: 'eu.gcr.io/microservices-2020/istio-service:v1'
+         ports:
+          - protocol: TCP
+            containerPort: 8080
+         readinessProbe:
+            httpGet:
+              path: /getMessage
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Production-Service
+  labels:
+    app: prod-deployment
+spec:
+  selector:
+    app: prod-deployment
+  ports:
+   - port: 8080
+     targetPort: 8080
+  type: LoadBalancer
