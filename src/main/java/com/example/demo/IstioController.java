@@ -24,7 +24,7 @@ public class IstioController {
 	
 	@RequestMapping(value = "/getmessage", method = RequestMethod.GET)
 	public String getMessage() {
-		return "Hello This is Version V:2 Loaded!!!!!!";
+		return "Hello Surjeet! This is Version V:2 Re Loaded!!!!!!"+ "Hello!";
 	}
 
 	// 1.Find all transactions in the year 2011 and sort them by value (small to
