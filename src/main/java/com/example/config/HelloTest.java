@@ -6,5 +6,9 @@ public class HelloTest {
 		for (int i = 0; i < 10; i++) {
 			System.out.println("Future 2 Test..");
 		}
+		while(true){
+			System.out.println("Infinite Loop");
+		}
+		
 	}
 }
