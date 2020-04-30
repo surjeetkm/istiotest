@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-deployment
+  labels:
+    app: green-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: green-deploy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+         app: green-deploy
+    spec:
+      containers:
+       - name: green-deploy
+         image: eu.gcr.io/microservices-2020/istio-service:v2
+         ports:
+          - containerPort: 8080
+         imagePullPolicy: Always 
+                 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: green-service
+  labels:
+    app: green-deploy
+spec:
+  selector:
+    app: prod-deploy
+  ports:
+   - port: 8080
+     targetPort: 8080
+  type: LoadBalancer
