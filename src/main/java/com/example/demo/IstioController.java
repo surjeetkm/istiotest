@@ -22,9 +22,9 @@ public class IstioController {
 	@Autowired
 	private IstioUtilityService istioUtilityService;
 	
-	@RequestMapping(value = "/getmessage", method = RequestMethod.GET)
+	@RequestMapping(value = "/v3/getmessage", method = RequestMethod.GET)
 	public String getMessage() {
-		return " Good Night!This is Version V:2 Loaded!!!!!!";
+		return " Good Night!This is Version V:3 Loaded!!!!!!";
 	}
 
 	// 1.Find all transactions in the year 2011 and sort them by value (small to

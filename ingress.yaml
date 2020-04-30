@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sb-ingress
+spec:
+  rules:
+  -  http:
+      paths:
+      - path: /getmessage
+        backend:
+          serviceName: blue-deploy
+          servicePort: 8080
+      - path: /v3/getmessage
+        backend:
+          serviceName: green-deploy
+          servicePort: 8080
+

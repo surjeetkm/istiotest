@@ -35,7 +35,7 @@ metadata:
     app: green-deploy
 spec:
   selector:
-    app: prod-deploy
+    app: green-deploy
   ports:
    - port: 8080
      targetPort: 8080
